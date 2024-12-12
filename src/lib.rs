@@ -1,7 +1,8 @@
 use std::fmt;
+use std::thread;
 
 pub struct ThreadPool {
-    size: usize,
+    threads: Vec<thread::JoinHandle<()>>,
 }
 
 #[derive(Debug)]
@@ -16,7 +17,13 @@ impl fmt::Display for PoolCreationError {
 impl ThreadPool {
     pub fn build(size: usize) -> Result<ThreadPool, PoolCreationError> {
         if size > 0 {
-            Ok(Self { size })
+            let mut threads = Vec::with_capacity(size);
+
+            for _ in 0..size {
+                // create the threads
+            }
+
+            Ok(Self { threads })
         } else {
             Err(PoolCreationError)
         }

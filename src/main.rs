@@ -11,7 +11,7 @@ use miniserver::ThreadPool;
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 
-    let pool = ThreadPool::build(0).unwrap_or_else(|err| {
+    let pool = ThreadPool::build(4).unwrap_or_else(|err| {
         eprintln!("Not enough threads: {err}");
         process::exit(1);
     });
