@@ -1,12 +1,11 @@
+use miniserver::ThreadPool;
 use std::fs;
 use std::{
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
-    thread,
+    process, thread,
     time::Duration,
-    process,
 };
-use miniserver::ThreadPool;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
